@@ -18,6 +18,7 @@ This system relies on a few command-line tools that need to be installed:
    - `CREATE DATABASE crime;`
    - `CREATE DATABASE test_crime;`
    - `ALTER ROLE crime_user WITH Superuser;`
+   - Type `\q` to exit `psql`.
 3. Test the server by running `npm start` in the root directory of the project and navigating to `localhost:3000` in your browser. If you have any issues, let Tyler know and he will help you get started.
 
 #### Windows
