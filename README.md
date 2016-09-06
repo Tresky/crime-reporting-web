@@ -1,8 +1,8 @@
 # Crime App
----
+
 ### Getting Started
 This system relies on a few command-line tools that need to be installed:
- - NodeJS (`node` in terminal)
+ - NodeJS (`node` in terminal, sometimes `nodejs`)
  - Node Package Manager (`npm` in terminal)
  - `wget` (used in `setup.sh` in Mac/Linux only)
 
@@ -13,6 +13,11 @@ This system relies on a few command-line tools that need to be installed:
   - If you get an error saying you don't have `wget` installed, install it by running:
      - `brew install wget` on Mac
      - `sudo apt-get install wget` on Linux
+3. Now you'll need to get PostgreSQL set up. Open the psql command-line interface by clicking the elephant in your Mac status menu (top-right of screen) and selecting the `Open psql` option.
+   - `CREATE USER crime_user;`
+   - `CREATE DATABASE crime;`
+   - `CREATE DATABASE test_crime;`
+   - `ALTER ROLE crime_user WITH Superuser;`
 3. Test the server by running `npm start` in the root directory of the project and navigating to `localhost:3000` in your browser. If you have any issues, let Tyler know and he will help you get started.
 
 #### Windows
@@ -25,4 +30,20 @@ Windows doesn't have some of the command-line tools needed to run the setup scri
 3. Open your `.gitignore` file in the root directory. Paste the following lines in the bottom of the file. Note: it may be a hidden file, so you'll need to "show hidden files" in order to see it.
    - `.env`
    - `config/secrets.js`
+4. Now you'll need to setup PostgreSQL. Windows doesn't have an easy to use command-line tool like Linux and Mac. So, you'll have to use PgAdmin which should have been installed when you installed PostgreSQL.
+   - Open PgAdmin
+   - Click the 'power plug' icon to add a server.
+     - Name: `localhost`
+     - Host: `localhost`
+     - Port: `5432`
+   - Double-click the new server
+   - Right-click `Login Roles` and add a new login role.
+     - Role Name: `crime_user`
+     - Role Priveleges Tab: Check `Can Login`, `Inherit Rights`, and `Superuser`
+   - Right-click `Databases` and add a new database.
+     - Name: `crime`
+     - Owner: `crime_user`
+   - Right-click `Databases` and add a new database.
+     - Name: `test_crime`
+     - Owner: `crime_user`
 4. Test the server by running `npm start` in the root directory of the project and navigating to `localhost:3000` in your browser. If you have any issues, let Tyler know and he will help you get started.
