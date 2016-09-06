@@ -13,7 +13,7 @@ This system relies on a few command-line tools that need to be installed:
   - If you get an error saying you don't have `wget` installed, install it by running:
      - `brew install wget` on Mac
      - `sudo apt-get install wget` on Linux
-3. Test the server by running `npm start` in the root directory of the project. If you have any issues, let Tyler know and he will help you get started.
+3. Test the server by running `npm start` in the root directory of the project and navigating to `localhost:3000` in your browser. If you have any issues, let Tyler know and he will help you get started.
 
 #### Windows
 Windows doesn't have some of the command-line tools needed to run the setup script I wrote, so you'll have to do this all manually.
@@ -25,4 +25,4 @@ Windows doesn't have some of the command-line tools needed to run the setup scri
 3. Open your `.gitignore` file in the root directory. Paste the following lines in the bottom of the file. Note: it may be a hidden file, so you'll need to "show hidden files" in order to see it.
    - `.env`
    - `config/secrets.js`
-4. Test the server by running `npm start` in the root directory of the project. If you have any issues, let Tyler know and he will help you get started.
+4. Test the server by running `npm start` in the root directory of the project and navigating to `localhost:3000` in your browser. If you have any issues, let Tyler know and he will help you get started.
