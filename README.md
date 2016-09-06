@@ -17,6 +17,7 @@ This system relies on a few command-line tools that need to be installed:
 
 #### Windows
 Windows doesn't have some of the command-line tools needed to run the setup script I wrote, so you'll have to do this all manually.
+
 1. In the root directory of the project, run `npm install` to install all of the dependencies that our project relies on. This will install Express along with a number of other packages.
 2. Create a file in the root directory of the project called `.env`. Inside of it, paste the following line (we will change the value later):
    - `SESSION_SECRET=TemporarySessionSecret`
