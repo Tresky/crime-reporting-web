@@ -48,3 +48,9 @@ Windows doesn't have some of the command-line tools needed to run the setup scri
      - Name: `test_crime`
      - Owner: `crime_user`
 4. Test the server by running `npm start` in the root directory of the project and navigating to `localhost:3000` in your browser. If you have any issues, let Tyler know and he will help you get started.
+    - If an error occurs when running the `npm start` that looks like this:
+
+        "Failed to prune sessions: password authentication failed for user 'crime_user'" or says something to the lines of "Password Authentication Failed."
+
+        - In PgAdmin, right click on `crime_user` and go to properties. Go to definition. And put `123` for the password and save it. Now repeat step 4.
+        
