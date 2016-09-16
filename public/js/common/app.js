@@ -1,5 +1,8 @@
 'use strict';
-var app = angular.module('express-starter', ['ngAnimate', 'ngRoute', 'vModal']);
+
+var app = angular.module('express-starter', [
+  'ngAnimate', 'ngRoute', 'vModal', 'angularMoment'
+]);
 
 // app.config(['$httpProvider', function(httpProvider) {
 // 	httpProvider.defaults.xsrfHeaderName = '_csrf';

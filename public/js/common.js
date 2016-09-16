@@ -14,8 +14,6 @@
  */
 
 /* LIST OF 3rd PARTY LIBS */
-
-
 //= require lib/angular.min
 //= require lib/angular-route.min
 //= require lib/angular-animate.min
@@ -27,6 +25,8 @@
 
 /* LIST OF CUSTOM JS CODE FILES */
 //= require common/app
+//= require services/locationService
+//= require common/homeController
 //= require common/pswStrengthComponent
 //= require common/userController
 //= require common/contactController

@@ -1,8 +1,28 @@
 <% layout('layout') -%>
 
-<h1>BeAware</h1>
-<p class="lead">Crime Reporting</p>
-<hr/>
-<div class="row">
-  Crime Stuff
+<div ng-controller="HomeController">
+  <style>
+  #map {
+    height: 200px;
+  }
+  </style>
+
+  <div class="primary-container">
+    <div class="home-container">
+      <h1 class="home-title">BeAware of your area.</h1>
+      <!-- <p class="lead">of your area.</p> -->
+      <div class="">
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
+        <span class="fa fa-map-marker" ng-if="state.q.geolocationEnabled()" ng-click="setCurrentPosition()"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function initAutocomplete() {
+      // Create the search box and link it to the UI element.
+      var input = document.getElementById('pac-input');
+      var searchBox = new google.maps.places.SearchBox(input);
+    }
+  </script>
 </div>
