@@ -1,0 +1,22 @@
+{
+  "name": "BeAware",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Tyler Petresky <tnpetresky@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Tresky/crime-reporting-web",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-moment": "^0.10.3"
+  }
+}
