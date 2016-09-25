@@ -31,6 +31,7 @@ var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
+var crimeController = require('./controllers/crime');
 
 /**
  * API keys and Passport configuration.
@@ -131,6 +132,11 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 /**
  * API examples routes.
  */
+
+
+app.get('/api/crime/:id', crimeController.show);
+
+
 app.get('/api', apiController.getApi);
 app.get('/api/twilio', apiController.getTwilio);
 app.post('/api/twilio', apiController.postTwilio);
