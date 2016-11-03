@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-moment": "^0.10.3"
+    "angular-moment": "^0.10.3",
+    "angular-google-maps": "^2.4.0"
   }
 }

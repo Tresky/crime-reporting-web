@@ -9,3 +9,10 @@ exports.index = function(req, res) {
     title: 'Home'
   });
 };
+
+exports.crimeList = function(req, res) {
+  res.render('crime-list', {
+    title: 'Crime List',
+    params: 'Tyler'
+  });
+};

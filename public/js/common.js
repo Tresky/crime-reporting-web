@@ -26,7 +26,11 @@
 /* LIST OF CUSTOM JS CODE FILES */
 //= require common/app
 //= require services/locationService
+//= require services/libraryStore
 //= require common/homeController
+//= require common/crimeListController
 //= require common/pswStrengthComponent
 //= require common/userController
 //= require common/contactController
+
+//= require directives/crimeListItem

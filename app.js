@@ -111,6 +111,7 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
  * Primary app routes.
  */
 app.get('/', homeController.index);
+app.get('/crimes', homeController.crimeList);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
