@@ -28,6 +28,7 @@
 //= require services/locationService
 //= require services/libraryStore
 //= require http-services/Crime.js
+//= require http-services/Comment.js
 //= require common/homeController
 //= require common/crimeListController
 //= require common/pswStrengthComponent
@@ -36,3 +37,4 @@
 
 //= require directives/beaware.js
 //= require directives/crimeListItem
+//= require directives/commentBox
