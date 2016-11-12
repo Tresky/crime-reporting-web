@@ -27,10 +27,12 @@
 //= require common/app
 //= require services/locationService
 //= require services/libraryStore
+//= require http-services/Crime.js
 //= require common/homeController
 //= require common/crimeListController
 //= require common/pswStrengthComponent
 //= require common/userController
 //= require common/contactController
 
+//= require directives/beaware.js
 //= require directives/crimeListItem

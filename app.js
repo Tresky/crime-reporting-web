@@ -28,6 +28,7 @@ var connectAssets = require('connect-assets');
  * Controllers (route handlers).
  */
 var homeController = require('./controllers/home');
+var crimeController = require('./controllers/crime');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
@@ -110,8 +111,7 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 /**
  * Primary app routes.
  */
-app.get('/', homeController.index);
-app.get('/crimes', homeController.crimeList);
+app.get('/app', homeController.app);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
@@ -133,6 +133,8 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
  * API examples routes.
  */
 app.get('/api', apiController.getApi);
+app.get('/api/crimes', crimeController.index);
+
 app.get('/api/twilio', apiController.getTwilio);
 app.post('/api/twilio', apiController.postTwilio);
 app.get('/api/facebook', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getFacebook);

@@ -1,0 +1,101 @@
+.crime-item {
+  width: 100%;
+  border-radius: 3px;
+
+  .crime-list-item {
+    .primary-container {
+      cursor: pointer;
+      background-color: @gray-lighter;
+      height: 70px;
+      padding: 15px;
+      position: relative;
+
+      -webkit-transition: background-color 200ms ease-in-out;
+      -moz-transition: background-color 200ms ease-in-out;
+      -o-transition: background-color 200ms ease-in-out;
+      transition: background-color 200ms ease-in-out;
+
+      &:hover {
+        background-color: @gray-light;
+      }
+
+      .icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        float: right;
+        font-size: 3.0rem;
+        transform: translateY(-50%);
+      }
+    }
+
+    .expansion-container-wrapper {
+      padding: 0 5px;
+
+      .expansion-container {
+        overflow: hidden;
+        box-shadow: inset 0px 3px 6px -3px rgba(0, 0, 0, 0.5);
+        width: 100%;
+        background-color: @gray-lighter;
+        padding: 10px;
+
+        .data-point {
+          font-size: 1.4rem;
+
+          .label {
+            color: @gray-darker;
+          }
+
+          .content {
+            color: @gray-dark;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Pour dire en CSS3 ce qui devra être animé :
+Angular ajoute dynamiquement des classes CSS.
+La transition se fait soit entre ng-enter et ng-enter-active
+ou entre ng-leave et ng-leave-active.
+*/
+ .animate-if.ng-enter, .animate-if.ng-leave {
+    -webkit-transition: 200ms linear all;
+    -moz-transition: 200ms linear all;
+    -ms-transition: 200ms linear all;
+    -o-transition: 200ms linear all;
+    transition: 200ms linear all;
+}
+/* du début de l'entrée */
+ .animate-if.ng-enter {
+    max-height: 0;
+    opacity: 0;
+}
+/* à la fin de l'entrée */
+ .animate-if.ng-enter.ng-enter-active {
+    max-height: 100px;
+    opacity:1;
+}
+/* du début de la sortie */
+ .animate-if.ng-leave {
+    max-height: 100px;
+    opacity:1;
+}
+/* à la fin de la sortie */
+ .animate-if.ng-leave.ng-leave-active {
+    max-height: 0;
+    opacity:1;
+}

@@ -1,0 +1,50 @@
+.crime-list-page {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
+  padding: 15px;
+
+  .crime-list {
+    padding: 20px;
+    width: 50%;
+    display: inline-block;
+    float: left;
+
+    .crime-item {
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .map-container-wrapper {
+    // background-color: rgba(0, 0, 0, 0.3);
+    // width: 100%;
+    // height: 100%;
+    // float: right;
+    // position: relative;
+    // padding: 5px;
+
+    .map-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: inline-block;
+      padding: 20px;
+      width: 50%;
+      height: 600px;
+      float: right;
+      background-color: @gray-lighter;
+      transform: translate(0%, -50%);
+
+      #map {
+        border: 1px solid @gray;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

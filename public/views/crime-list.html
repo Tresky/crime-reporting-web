@@ -1,0 +1,13 @@
+<div class="crime-list-page">
+  <div ng-class="{hide: !state.q.doneInitializing()}">
+    <div class="crime-list" ng-if="state.q.doneInitializing()">
+      <div crime-list-item="crime" class="crime-item" ng-repeat="crime in state.crimeList"></div>
+    </div>
+    <div class="map-container-wrapper">
+      <div class="map-container">
+        <div id="map" class="map"></div>
+      </div>
+    </div>
+  </div>
+  <div class="global-loader" ng-if="!state.q.doneInitializing()"><i class="fa fa-spinner fa-spin"></i></div>
+</div>

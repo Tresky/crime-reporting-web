@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "angular-moment": "^0.10.3",
-    "angular-google-maps": "^2.4.0"
+    "angular-google-maps": "^2.4.0",
+    "angular-ui-router": "^0.3.2"
   }
 }

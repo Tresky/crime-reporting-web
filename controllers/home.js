@@ -10,6 +10,12 @@ exports.index = function(req, res) {
   });
 };
 
+exports.app = function(req, res) {
+  res.render('app', {
+    title: 'Application'
+  });
+}
+
 exports.crimeList = function(req, res) {
   res.render('crime-list', {
     title: 'Crime List',

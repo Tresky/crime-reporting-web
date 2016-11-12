@@ -1,6 +1,7 @@
 @import "beaware/home";
 @import "beaware/crimeList";
 @import "beaware/crimeListItem";
+@import "beaware/commentBox";
 
 
 //== Colors
@@ -26,7 +27,7 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               rgba(120, 120, 120, 0.3);
+@body-bg:               rgba(120, 120, 120, 0.2);
 //** Global text color on `<body>`.
 @text-color:            @brand-primary;
 
@@ -357,7 +358,7 @@
 @navbar-collapse-max-height:       340px;
 
 @navbar-default-color:             #777;
-@navbar-default-bg:                @body-bg;
+@navbar-default-bg:                @gray-darker;
 @navbar-default-border:            transparent;
 
 // Navbar links
@@ -1169,4 +1170,17 @@ a.list-group-item {
 
 .popover {
   color: @text-color;
+}
+
+.hide {
+  display: none;
+}
+
+.global-loader {
+  font-size: 8.5rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white
 }

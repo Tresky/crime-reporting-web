@@ -1,8 +1,12 @@
 'use strict';
 
 var app = angular.module('beaware', [
-  'ngAnimate', 'ngRoute', 'vModal', 'angularMoment'
-]);
+  'ngAnimate', 'vModal', 'angularMoment', 'ngRoute'
+])
+  .config(['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/', {templateUrl: 'views/home.html', controller: 'HomeCtrl'})
+                  .when('/crimes', {templateUrl: 'views/crime-list.html', controller: 'CrimeListCtrl'});
+  }]);
 
 // app.config(['$httpProvider', function(httpProvider) {
 // 	httpProvider.defaults.xsrfHeaderName = '_csrf';
