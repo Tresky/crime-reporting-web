@@ -1,23 +1,30 @@
 'use strict';
 
-app.directive('commentContainer', function() {
+app.directive('commentContainer', function(Comments) {
   return {
-    template: '<div class="comment-container"><div comment="comment" class="comment-box" ng-repeat="comment in state.comments"></div></div>',
+    template: '<div class="comment-container"><div class="header">Comments</div><div comment="comment" class="comment-box" ng-repeat="comment in state.comments"></div><div comment-create="crime"></div></div>',
     restrict: 'A',
     scope: {
       crime: '=commentContainer'
     },
     link: function(scope, elem) {
       scope.state = {
-        state.comments: null
+        comments: null
       };
 
-      Comments.loadByCrimeId(scope.crime.id)
+
+      function fetchCrimes() {
+        Comments.getByCrimeId(scope.crime.id)
         .then(function(comments) {
           scope.state.comments = comments;
         }, function(response) {
-          console.log('Failed to load comments for crime', scope.crime.id);
+          console.error('Failed to load comments for crime', scope.crime.id);
         });
+      }
+
+      scope.$on('comment:createSuccess', fetchCrimes);
+      fetchCrimes();
+
     },
     controller: function() {
 

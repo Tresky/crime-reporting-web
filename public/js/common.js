@@ -27,14 +27,16 @@
 //= require common/app
 //= require services/locationService
 //= require services/libraryStore
-//= require http-services/Crime.js
-//= require http-services/Comment.js
+//= require http-services/Crime
+//= require http-services/Comment
 //= require common/homeController
 //= require common/crimeListController
 //= require common/pswStrengthComponent
 //= require common/userController
 //= require common/contactController
 
-//= require directives/beaware.js
+//= require directives/beaware
 //= require directives/crimeListItem
-//= require directives/commentBox
+//= require directives/commentContainer
+//= require directives/comment
+//= require directives/commentCreate

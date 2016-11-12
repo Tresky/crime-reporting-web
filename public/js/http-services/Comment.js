@@ -15,8 +15,8 @@ app.factory('Comments', function($http, $q) {
 
   };
 
-  Comments.getByCrimeId = function(params) {
-    return $http.get('/api/comments', { params: params })
+  Comments.getByCrimeId = function(crimeId) {
+    return $http.get('/api/comments', { params: { crimeId: crimeId } })
       .then(function(data) {
         return _.map(data.data, function(d) {
           return new Comment(d);
@@ -26,6 +26,16 @@ app.factory('Comments', function($http, $q) {
         return $q.reject(response);
       });
   };
+
+  Comments.create = function(data) {
+    return $http.post('/api/comments', data)
+      .then(function(data) {
+        return new Comment(data);
+      }, function(response) {
+        console.error('Error:', response);
+        return $q.reject(response);
+      });
+  }
 
   Comments.initWithData = function(initData) {
     return new Comment(initData);

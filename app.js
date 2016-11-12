@@ -29,6 +29,7 @@ var connectAssets = require('connect-assets');
  */
 var homeController = require('./controllers/home');
 var crimeController = require('./controllers/crime');
+var commentController = require('./controllers/comment');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
@@ -134,6 +135,8 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
  */
 app.get('/api', apiController.getApi);
 app.get('/api/crimes', crimeController.index);
+app.get('/api/comments', commentController.index);
+app.post('/api/comments', commentController.create);
 
 app.get('/api/twilio', apiController.getTwilio);
 app.post('/api/twilio', apiController.postTwilio);
