@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('HomeCtrl', ['$scope', '$rootScope', '$location', '$timeout', 'baLocation', 'baLibraryStore', 'baDataService',
-	function($scope, $rootScope, $location, $timeout, baLocation, baLibraryStore, baDataService) {
+app.controller('HomeCtrl', ['$scope', '$rootScope', '$location', '$timeout', 'baLocation', 'baLibraryStore',
+	function($scope, $rootScope, $location, $timeout, baLocation, baLibraryStore) {
     $scope.state = {
       placeId: null,
       geohash: null,
@@ -82,10 +82,15 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$location', '$timeout', 'ba
 					baLocation.setExplicitPositionWithCurrent();
 					$timeout(function() { $location.path('/crimes'); }, 100);
 				});
-		}
+		};
 
 		// Expose this function to the $scope
     $scope.setCurrentPosition = setCurrentPosition;
+
+		// Takes you to the Report Crime page
+		$scope.report = function() {
+			$location.path('/report');
+		};
 
 		// Initialize the controller
 		initialize();

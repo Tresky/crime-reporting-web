@@ -5,7 +5,8 @@ var app = angular.module('beaware', [
 ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'views/home.html', controller: 'HomeCtrl'})
-                  .when('/crimes', {templateUrl: 'views/crime-list.html', controller: 'CrimeListCtrl'});
+                  .when('/crimes', {templateUrl: 'views/crime-list.html', controller: 'CrimeListCtrl'})
+                  .when('/report', {templateUrl: 'views/report-crime.html', controller: 'ReportCrimeCtrl'});
   }]);
 
 // app.config(['$httpProvider', function(httpProvider) {

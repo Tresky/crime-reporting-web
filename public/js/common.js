@@ -19,6 +19,8 @@
 //= require lib/angular-animate.min
 //= require lib/jquery-2.1.3.min
 //= require lib/bootstrap.min
+//= require lib/ui-bootstrap.min
+//= require lib/ui-bootstrap-tpls.min
 //= require lib/zxcvbn
 //= require lib/v-modal.min
 
@@ -30,6 +32,7 @@
 //= require http-services/Crime
 //= require http-services/Comment
 //= require common/homeController
+//= require common/reportCrimeController
 //= require common/crimeListController
 //= require common/pswStrengthComponent
 //= require common/userController

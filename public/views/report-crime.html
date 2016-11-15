@@ -1,0 +1,43 @@
+<div class="report-crime-page">
+  <div ng-class="{hide: !state.q.doneInitializing()}">
+    <div class="information-form">
+      <div class="header">Report a Crime</div>
+
+      <div class=""></div>
+
+      <div class="item-label">Location</div>
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box" name="position"/>
+      <span class="fa fa-map-marker" ng-if="state.q.geolocationEnabled()" ng-click="setCurrentPosition()"></span>
+
+      <div class="item-label">Date of Crime</div>
+      <div class="input-group" style="width: 50%;">
+        <input type="text" class="form-control" uib-datepicker-popup ng-model="state.datepicker.value" is-open="state.datepicker.opened" datepicker-options="state.datepicker.options" ng-required="true" close-text="Close" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="state.datepicker.opened = !state.datepicker.opened"><i class="fa fa-calendar"></i></button>
+        </span>
+      </div>
+
+      <div class="item-label">Type of Crime</div>
+      <div class="btn-group" uib-dropdown is-open="state.dropdown.opened">
+        <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 150px;">
+          <span class="pull-left">{{state.dropdown.value || 'Select a Crime'}}</span><span class="caret pull-right" style="font-size:1.5rem;margin-top: 7px;"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li role="menuitem" ng-repeat="type in state.dropdown.types" ng-click="state.dropdown.value = type"><a>{{type}}</a></li>
+        </ul>
+      </div>
+
+      <div class="submit-wrapper">
+        <button type="button" class="btn btn-submit" ng-click="submit()"
+          ng-disabled="!(state.dropdown.value && state.location && state.location.placeId && state.datepicker.value)">Submit</button>
+      </div>
+
+    </div>
+    <div class="map-container-wrapper">
+      <div class="map-container">
+        <div id="map" class="map"></div>
+      </div>
+    </div>
+  </div>
+  <div class="global-loader" ng-if="!state.q.doneInitializing()"><i class="fa fa-spinner fa-spin"></i></div>
+</div>
