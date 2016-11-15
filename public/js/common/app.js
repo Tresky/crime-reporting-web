@@ -1,7 +1,7 @@
 'use strict';
 
 var app = angular.module('beaware', [
-  'ngAnimate', 'vModal', 'angularMoment', 'ngRoute'
+  'ngAnimate', 'vModal', 'angularMoment', 'ngRoute', 'ui.bootstrap'
 ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'views/home.html', controller: 'HomeCtrl'})
