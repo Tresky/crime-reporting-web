@@ -78,21 +78,21 @@ exports.show = function(req, res) {
 
 //
 exports.create = function(req, res) {
-	// validate params eg. index
-//create with db.Crime.create(req.params);
-// .then(function(createObj){
-//
-//
-//})
-//return the oject that was created.
+	var data = {
+		crimeType: req.body.crimeType,
+		placeId: req.body.placeId,
+		latitude: req.body.latitude,
+		longitude: req.body.longitude,
+		dateOfCrime: req.body.dateOfCrime,
+		userId: req.body.userId,
+		email: req.body.email
+	};
 
-	db.Crime.create(req.params)
-
-		.then(function(createObj) {
+	db.Crime.create(data)
+		.then(function(crime) {
 			res.send(crime);
 		}, function(response){
-
-			//failing case
+			console.log('Error:', response);
 			res.send(response);
 		});
 };

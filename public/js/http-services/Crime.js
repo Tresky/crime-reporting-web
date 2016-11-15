@@ -27,6 +27,16 @@ app.factory('Crimes', function($http, $q) {
       });
   };
 
+  Crimes.create = function(data) {
+    return $http.post('/api/crimes', data)
+      .then(function(data) {
+        return new Crime(data);
+      }, function(response) {
+        console.error('Error:', response);
+        return $q.reject(response);
+      });
+  };
+
   Crimes.initWithData = function(initData) {
     return new Crime(initData);
   };

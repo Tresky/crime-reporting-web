@@ -135,6 +135,7 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
  */
 app.get('/api', apiController.getApi);
 app.get('/api/crimes', crimeController.index);
+app.post('/api/crimes', crimeController.create);
 app.get('/api/comments', commentController.index);
 app.post('/api/comments', commentController.create);
 
