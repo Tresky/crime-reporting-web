@@ -75,6 +75,7 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', 'baLocation', 'baLibr
 						placeId: geocode.place_id,
 						timeFetched: moment.utc().valueOf()
 					};
+					$scope.state.address = geocode.formatted_address;
 					console.log('Current Location', $scope.state.location);
 
           // Create the Google map on the page
@@ -143,6 +144,8 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', 'baLocation', 'baLibr
 				var place = $scope.searchBox.getPlaces()[0];
 				var time = moment.utc().valueOf();
 
+				$scope.state.address = place.formatted_address;
+
 				console.log('PLACE', place);
 				$scope.state.location = {
 					lat: place.geometry.location.lat(),
@@ -177,6 +180,7 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', 'baLocation', 'baLibr
 		var setCurrentPosition = function() {
 			baLocation.fetchPositionGeocode()
 				.then(function(geocode) {
+					$scope.state.address = geocode.formatted_address;
 					$('#pac-input').val(geocode.formatted_address);
 					baLocation.setExplicitPositionWithCurrent()
             .then(function(location) {
@@ -208,6 +212,7 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', 'baLocation', 'baLibr
 			var data = {
 				crimeType: $scope.state.dropdown.value.toLowerCase(),
 				placeId: $scope.state.location.placeId,
+				address: $scope.state.address,
 				latitude: $scope.state.location.lat,
 				longitude: $scope.state.location.lng,
 				dateOfCrime: $scope.state.datepicker.value,
@@ -220,6 +225,7 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', 'baLocation', 'baLibr
 			Crimes.create({
 				crimeType: $scope.state.dropdown.value.toLowerCase(),
 				placeId: $scope.state.location.placeId,
+				address: $scope.state.address,
 				latitude: $scope.state.location.lat,
 				longitude: $scope.state.location.lng,
 				dateOfCrime: $scope.state.datepicker.value,

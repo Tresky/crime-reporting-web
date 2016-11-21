@@ -19,6 +19,10 @@ module.exports = function(db, DataTypes){
 			type: DataTypes.STRING,
 			allowNull: false
 		},
+		address: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
 		latitude: {
 			type: DataTypes.STRING,
 			allowNull: false

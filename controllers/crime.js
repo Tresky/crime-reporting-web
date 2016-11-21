@@ -81,6 +81,7 @@ exports.create = function(req, res) {
 	var data = {
 		crimeType: req.body.crimeType,
 		placeId: req.body.placeId,
+		address: req.body.address,
 		latitude: req.body.latitude,
 		longitude: req.body.longitude,
 		dateOfCrime: req.body.dateOfCrime,

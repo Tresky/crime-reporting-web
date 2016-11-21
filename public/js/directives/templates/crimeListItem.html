@@ -1,6 +1,7 @@
 <div class="crime-list-item" ng-click="goToHome()">
   <div class="primary-container" ng-click="state.expand = !state.expand;">
-    {{ _.capitalize(crimeListItem.crimeType) }} reported at {{state.geocode.formatted_address.split(',')[0]}}.
+    <span class="crime-icon"><i ng-class="state.crimeIcon"></i></span>
+    {{ _.capitalize(crimeListItem.crimeType) }} reported at {{crimeListItem.address.split(',')[0]}}.
     <span class="icon">
       <i ng-class="{'fa fa-angle-up': state.expand, 'fa fa-angle-down': !state.expand}"></i>
     </span>
@@ -13,7 +14,7 @@
       </div>
       <div class="data-point">
         <div class="label">OCCURRED AT:</div>
-        <div class="content">{{crimeListItem._dateOfCrime.format('DD/MM/YY hh:mm')}}</div>
+        <div class="content">{{crimeListItem._dateOfCrime.format('MM/DD/YY hh:mm')}}</div>
       </div>
       <div class="data-point">
         <div class="label">COORDINATES:</div>
