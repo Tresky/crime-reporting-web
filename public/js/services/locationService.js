@@ -61,6 +61,7 @@ app.service('baLocation', ['$q', 'baLibraryStore', function($q, baLibraryStore) 
       if (status === 'OK') {
         deferred.resolve(results[0]);
       } else {
+        console.log('Failed to geocode', status, latlng);
         deferred.reject(status);
       }
     });
