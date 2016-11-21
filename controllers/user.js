@@ -30,15 +30,19 @@ exports.postLogin = function(req, res, next) {
 
   passport.authenticate('local', function(err, user, info) {
     if (!user || err) {
-      req.flash('errors', { msg: err || info.message });
+      req.flash('errors', { msg: err || 'Couldn\'t log in.' });
       return res.redirect('/login');
     }
     req.logIn(user, function(loginErr) {
       if (loginErr) return next(loginErr);
-      req.flash('success', { msg: 'Success! You are logged in.' });
-      var redirectTo = req.session.returnTo || '/';
+      // req.flash('success', { msg: 'Success! You are logged in.' });
+      // var redirectTo = req.session.returnTo || '/app#';
       delete req.session.returnTo;
-      res.redirect(redirectTo);
+      // res.redirect(redirectTo);
+      // res.render('home', {
+      //   title: 'Home'
+      // });
+      res.redirect('/app');
     });
   })(req, res, next);
 };
@@ -80,7 +84,7 @@ exports.postSignup = function(req, res, next) {
       req.logIn(user, function(err) {
         if (err) return next(err);
         req.flash('success', { msg: 'Your account has been created and you\'ve been logged in.' });
-        res.redirect('/');
+        res.redirect('/app#');
       });
     })
     .catch(function(err) {
