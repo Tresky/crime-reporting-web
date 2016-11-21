@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', 'baLocation', 'baLibraryStore', 'Crimes',
-	function($scope, $rootScope, $timeout, baLocation, baLibraryStore, Crimes) {
+app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', '$location', 'baLocation', 'baLibraryStore', 'Crimes',
+	function($scope, $rootScope, $timeout, $location, baLocation, baLibraryStore, Crimes) {
     $scope.state = {
       location: null,
       geohash: null,
@@ -75,7 +75,6 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', 'baLocati
 						timeFetched: moment.utc().valueOf()
 					};
 					$scope.state.address = geocode.formatted_address;
-					console.log('Current Location', $scope.state.location);
 
           // Create the Google map on the page
           $scope.map = new google.maps.Map(document.getElementById('report-map'), {
@@ -105,7 +104,6 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', 'baLocati
 						// Attach a click listen to the map. This allows you to set your
 						// location by clicking on the map.
 	          $scope.map.addListener('click', function(event) {
-							console.log('Map Clicked', event);
 	            $scope.state.location = {
 	              lat: event.latLng.lat(),
 	              lng: event.latLng.lng(),
@@ -154,7 +152,6 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', 'baLocati
 
 				$scope.state.address = place.formatted_address;
 
-				console.log('PLACE', place);
 				$scope.state.location = {
 					lat: place.geometry.location.lat(),
 					lng: place.geometry.location.lng(),
@@ -192,7 +189,6 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', 'baLocati
 					$('#pac-input').val(geocode.formatted_address);
 					baLocation.setExplicitPositionWithCurrent()
             .then(function(location) {
-							console.log('GEOCODE', geocode);
 							$scope.location = {
 								lat: location.lat,
 								lng: location.lng,
@@ -228,8 +224,6 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', 'baLocati
 				email: ''
 			};
 
-			console.log('SUBMITTING', data, $scope.state.location);
-
 			Crimes.create({
 				crimeType: $scope.state.dropdown.value.toLowerCase(),
 				placeId: $scope.state.location.placeId,
@@ -241,6 +235,7 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', 'baLocati
 				email: ''
 			}).then(function(crime) {
 					console.log('Created New Crime', crime);
+					$location.path('/crimes');
 				}, function(response) {
 					console.log('Failed to create new crime', response);
 				});
