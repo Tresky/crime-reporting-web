@@ -76,11 +76,13 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$location', '$timeout', 'ba
 		 * on the icon near the text box.
 		 */
 		var setCurrentPosition = function() {
+			$scope.state.fetchingPosition = true;
 			baLocation.fetchPositionGeocode()
 				.then(function(geocode) {
 					$('#pac-input').val(geocode.formatted_address);
 					baLocation.setExplicitPositionWithCurrent();
 					$timeout(function() { $location.path('/crimes'); }, 100);
+					$scope.state.fetchingPosition = false;
 				});
 		};
 

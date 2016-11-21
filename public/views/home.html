@@ -4,7 +4,7 @@
       <h1 class="home-title">BeAware of your area.</h1>
       <div class="">
         <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
-        <span class="fa fa-map-marker" ng-if="state.q.geolocationEnabled()" ng-click="setCurrentPosition()"></span>
+        <span ng-class="{'fa fa-map-marker': !state.fetchingPosition, 'fa fa-spinner fa-spin': state.fetchingPosition}" ng-if="state.q.geolocationEnabled()" ng-click="setCurrentPosition()"></span>
       </div>
     </div>
   </div>
