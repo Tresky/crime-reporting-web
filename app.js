@@ -3,6 +3,9 @@
  * Module dependencies.
  */
 var express = require('express');
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
 require('dotenv').config();
 var cookieParser = require('cookie-parser');
 var compress = require('compression');
@@ -79,8 +82,8 @@ app.use(session({
   resave: false,
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    httpOnly: true
-    //, secure: true // only when on HTTPS
+    httpOnly: true,
+    secure: true // only when on HTTPS
   }
 }));
 app.use(passport.initialize());
@@ -167,9 +170,15 @@ db
   .sequelize
   .sync({ force: false })
   .then(function() {
-      app.listen(app.get('port'), function() {
-        console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
-      });
+    https.createServer({
+      key: fs.readFileSync('server.key'),
+      cert: fs.readFileSync('server.pem')
+    }, app).listen(443, function() {
+      console.log('Express server listening on port %d in %s mode', 443, app.get('env'));
+    });
+    http.createServer(app).listen(3000, function() {
+      console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
+    });
   });
 
 module.exports = app;
