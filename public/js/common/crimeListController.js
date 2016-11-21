@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('CrimeListCtrl', ['$scope', 'baLocation', 'Crimes', function($scope, baLocation, Crimes) {
+app.controller('CrimeListCtrl', ['$scope', '$timeout', 'baLocation', 'Crimes', 'Notifications', function($scope, $timeout, baLocation, Crimes, Notifications) {
   $scope.state = {
     location: null,
     map: null,
@@ -24,7 +24,7 @@ app.controller('CrimeListCtrl', ['$scope', 'baLocation', 'Crimes', function($sco
       $scope.state.initialized = true;
 
       // Create the Google map on the page
-      $scope.state.map = new google.maps.Map(document.getElementById('map'), {
+      $scope.state.map = new google.maps.Map(document.getElementById('list-map'), {
         zoom: 11,
         center: $scope.state.location
       });
@@ -37,6 +37,20 @@ app.controller('CrimeListCtrl', ['$scope', 'baLocation', 'Crimes', function($sco
           title: crime.crime_type
         });
       });
+
+      $timeout(function() {
+        google.maps.event.trigger($scope.state.map, 'resize');
+        $scope.state.map.panTo($scope.state.location);
+        // Create a map marker for each crime loaded in
+        _.each($scope.state.crimeList, function(crime) {
+          var m = new google.maps.Marker({
+            position: { lat: parseFloat(crime.latitude), lng: parseFloat(crime.longitude) },
+            map: $scope.state.map,
+            title: crime.crime_type
+          });
+        });
+
+      }, 0);
     });
   }
 

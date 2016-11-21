@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', 'baLocation', 'baLibraryStore', 'Crimes',
-	function($scope, $rootScope, baLocation, baLibraryStore, Crimes) {
+app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', 'baLocation', 'baLibraryStore', 'Crimes',
+	function($scope, $rootScope, $timeout, baLocation, baLibraryStore, Crimes) {
     $scope.state = {
       location: null,
       geohash: null,
@@ -79,7 +79,7 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', 'baLocation', 'baLibr
 					console.log('Current Location', $scope.state.location);
 
           // Create the Google map on the page
-          $scope.map = new google.maps.Map(document.getElementById('map'), {
+          $scope.map = new google.maps.Map(document.getElementById('report-map'), {
             zoom: 11,
             center: {
 							lat: $scope.state.location.lat,
@@ -87,43 +87,52 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', 'baLocation', 'baLibr
 						}
           });
 
-					// A marker will be added to where you click
-					$scope.marker && $scope.marker.setMap(null);
-					$scope.marker = new google.maps.Marker({
-						position: { lat: $scope.state.location.lat, lng: $scope.state.location.lng },
-						map: $scope.map
-					});
-
-					$('#pac-input').val(geocode.formatted_address);
-
-					// Attach a click listen to the map. This allows you to set your
-					// location by clicking on the map.
-          $scope.map.addListener('click', function(event) {
-						console.log('Map Clicked', event);
-            $scope.state.location = {
-              lat: event.latLng.lat(),
-              lng: event.latLng.lng(),
-              timeFetched: moment.utc().valueOf()
-            };
+					$timeout(function() {
+						google.maps.event.trigger($scope.map, 'resize');
+		        $scope.map.panTo({
+							lat: $scope.state.location.lat,
+							lng: $scope.state.location.lng
+						});
 
 						// A marker will be added to where you click
-            $scope.marker && $scope.marker.setMap(null);
-            $scope.marker = new google.maps.Marker({
-              position: { lat: $scope.state.location.lat, lng: $scope.state.location.lng },
-              map: $scope.map
-            });
+						$scope.marker && $scope.marker.setMap(null);
+						$scope.marker = new google.maps.Marker({
+							position: { lat: $scope.state.location.lat, lng: $scope.state.location.lng },
+							map: $scope.map
+						});
 
-						// The map will pan to where you click
-            $scope.map.panTo($scope.marker.getPosition());
+						$('#pac-input').val(geocode.formatted_address);
 
-						// Current position will be set respectively
-            baLocation.geocodeCoordinates($scope.state.location)
-              .then(function(geocode) {
-                $scope.state.geocode = geocode;
-                $('#pac-input').val($scope.state.geocode.formatted_address);
-								$scope.state.location.placeId = $scope.state.geocode.place_id;
-              });
-          });
+						// Attach a click listen to the map. This allows you to set your
+						// location by clicking on the map.
+	          $scope.map.addListener('click', function(event) {
+							console.log('Map Clicked', event);
+	            $scope.state.location = {
+	              lat: event.latLng.lat(),
+	              lng: event.latLng.lng(),
+	              timeFetched: moment.utc().valueOf()
+	            };
+
+							// A marker will be added to where you click
+	            $scope.marker && $scope.marker.setMap(null);
+	            $scope.marker = new google.maps.Marker({
+	              position: { lat: $scope.state.location.lat, lng: $scope.state.location.lng },
+	              map: $scope.map
+	            });
+
+							// The map will pan to where you click
+	            $scope.map.panTo($scope.marker.getPosition());
+
+							// Current position will be set respectively
+	            baLocation.geocodeCoordinates($scope.state.location)
+	              .then(function(geocode) {
+	                $scope.state.geocode = geocode;
+	                $('#pac-input').val($scope.state.geocode.formatted_address);
+									$scope.state.location.placeId = $scope.state.geocode.place_id;
+									$scope.state.address = geocode.formatted_address;
+	              });
+						});
+          }, 0);
 
           $scope.state.doneInitializing = true;
         });
