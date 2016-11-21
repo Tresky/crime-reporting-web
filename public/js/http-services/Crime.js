@@ -6,6 +6,10 @@ app.factory('Crimes', function($http, $q) {
     var C = {};
     angular.extend(C, initData);
 
+    if (_.has(C, 'dateOfCrime')) {
+      C._dateOfCrime = moment(C.dateOfCrime);
+    }
+
     // M.sdsd = function.....
     return C;
   };
