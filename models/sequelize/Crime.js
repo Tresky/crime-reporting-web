@@ -47,7 +47,22 @@ module.exports = function(db, DataTypes){
 		tableName: 'crime',
 		instanceMethods: instanceMethods,
 		classMethods: {},
-		hooks: {}
+		hooks: {
+			afterCreate: function(crime) {
+				console.log('Creating Notifications');
+				db.models.User.findAll()
+					.then(function(users) {
+						users.forEach(function(user) {
+							console.log('- User', user.id);
+							db.models.Notification.create({
+								regionalId: crime.placeId,
+								crimeId: crime.id,
+								userId: user.id,
+							});
+						});
+					});
+			}
+		}
 	});
 
 	return Crime;
