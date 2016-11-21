@@ -20,10 +20,9 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', 'baLocati
 				value: null,
 				opened: false,
 				types: [
+					'Assault',
 					'Murder',
-					'Boredom',
-					'sdsdfsdf',
-					'sdfsdsdfasd'
+					'Stealing'
 				]
 			},
       q: {

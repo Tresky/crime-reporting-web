@@ -11,18 +11,20 @@ app.directive('crimeListItem', function($location, baLocation) {
       scope._ = _;
       scope.state = {
         expand: false,
-        geocode: null
+        geocode: null,
+        crimeIcon: ''
       };
 
       console.log('Crime List Item', scope.crimeListItem);
 
-      scope.crimeListItem._dateOfCrime = moment(scope.crimeListItem.dateOfCrime);
-      baLocation.geocodeCoordinates({
-        lat: parseFloat(scope.crimeListItem.latitude),
-        lng: parseFloat(scope.crimeListItem.longitude)
-      }).then(function(geocode) {
-        scope.state.geocode = geocode;
-      });
+      var type = scope.crimeListItem.crimeType;
+      if (type == 'murder') {
+        scope.state.crimeIcon = 'fa fa-times fa-3x';
+      } else if (type == 'stealing') {
+        scope.state.crimeIcon = 'fa fa-money fa-3x';
+      } else if (type == 'assault') {
+        scope.state.crimeIcon = 'fa fa-fire fa-3x';
+      }
 
 
 
