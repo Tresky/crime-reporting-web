@@ -6,7 +6,6 @@ app.factory('Comments', function($http, $q) {
     var C = {};
     angular.extend(C, initData);
 
-    // M.sdsd = function.....
     return C;
   };
 
@@ -35,7 +34,7 @@ app.factory('Comments', function($http, $q) {
         console.error('Error:', response);
         return $q.reject(response);
       });
-  }
+  };
 
   Comments.initWithData = function(initData) {
     return new Comment(initData);

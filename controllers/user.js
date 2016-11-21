@@ -35,13 +35,7 @@ exports.postLogin = function(req, res, next) {
     }
     req.logIn(user, function(loginErr) {
       if (loginErr) return next(loginErr);
-      // req.flash('success', { msg: 'Success! You are logged in.' });
-      // var redirectTo = req.session.returnTo || '/app#';
       delete req.session.returnTo;
-      // res.redirect(redirectTo);
-      // res.render('home', {
-      //   title: 'Home'
-      // });
       res.redirect('/app');
     });
   })(req, res, next);
