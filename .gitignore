@@ -3,3 +3,4 @@ node_modules
 config/secrets.js
 **/.DS_Store
 .env
+*.log
