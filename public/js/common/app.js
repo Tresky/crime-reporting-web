@@ -7,6 +7,9 @@ var app = angular.module('beaware', [
     $routeProvider.when('/', {templateUrl: 'views/home.html', controller: 'HomeCtrl'})
                   .when('/crimes', {templateUrl: 'views/crime-list.html', controller: 'CrimeListCtrl'})
                   .when('/report', {templateUrl: 'views/report-crime.html', controller: 'ReportCrimeCtrl'});
+  }])
+  .run(['notificationService', function(notificationService) {
+
   }]);
 
 // app.config(['$httpProvider', function(httpProvider) {

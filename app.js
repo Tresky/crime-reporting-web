@@ -2,7 +2,6 @@
 /**
  * Module dependencies.
  */
-// var toobusy = require('toobusy-js');
 var express = require('express');
 require('dotenv').config();
 var cookieParser = require('cookie-parser');
@@ -30,6 +29,7 @@ var connectAssets = require('connect-assets');
 var homeController = require('./controllers/home');
 var crimeController = require('./controllers/crime');
 var commentController = require('./controllers/comment');
+var notificationsController = require('./controllers/notification');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
@@ -138,6 +138,10 @@ app.get('/api/crimes', crimeController.index);
 app.post('/api/crimes', crimeController.create);
 app.get('/api/comments', commentController.index);
 app.post('/api/comments', commentController.create);
+app.get('/api/notifications', notificationsController.index);
+app.get('/api/notifications/:id', notificationsController.show);
+app.post('/api/notifications', notificationsController.create);
+app.post('/api/notifications_viewed', notificationsController.view);
 
 app.get('/api/twilio', apiController.getTwilio);
 app.post('/api/twilio', apiController.postTwilio);

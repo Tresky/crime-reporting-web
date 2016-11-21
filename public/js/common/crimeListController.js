@@ -18,6 +18,7 @@ app.controller('CrimeListCtrl', ['$scope', 'baLocation', 'Crimes', function($sco
    */
   function initialize() {
     console.log('Initializing Crime List Controller');
+    Notifications.markAllViewed();
     // Intialize the position we are currently loading crimes for
     initializePosition(function() {
       $scope.state.initialized = true;

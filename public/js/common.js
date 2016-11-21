@@ -29,8 +29,10 @@
 //= require common/app
 //= require services/locationService
 //= require services/libraryStore
+//= require services/notificationService
 //= require http-services/Crime
 //= require http-services/Comment
+//= require http-services/Notification
 //= require common/homeController
 //= require common/reportCrimeController
 //= require common/crimeListController
