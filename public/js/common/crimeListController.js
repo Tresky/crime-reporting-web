@@ -29,13 +29,15 @@ app.controller('CrimeListCtrl', ['$scope', '$timeout', 'baLocation', 'Crimes', '
         center: $scope.state.location
       });
 
-      // Create a map marker for each crime loaded in
-      _.each($scope.state.crimeList, function(crime) {
-        var m = new google.maps.Marker({
-          position: { lat: parseFloat(crime.latitude), lng: parseFloat(crime.longitude) },
-          map: $scope.state.map,
-          title: crime.crime_type
-        });
+      var cityCircle = new google.maps.Circle({
+        strokeColor: '#77BBFF',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#77BBFF',
+        fillOpacity: 0.35,
+        map: $scope.state.map,
+        center: $scope.state.location,
+        radius: 10000
       });
 
       $timeout(function() {
