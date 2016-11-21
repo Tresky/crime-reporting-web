@@ -4,7 +4,8 @@ app.service('baLibraryStore', ['$q', '$interval', function($q, $interval){
     var libraries = {
       'googleplaces': {
         name: "GooglePlaces",
-        url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAu_I-8fBuC3d_UrovCDMCswAfWmuF-iYE&libraries=places",
+        // url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAu_I-8fBuC3d_UrovCDMCswAfWmuF-iYE&libraries=places",
+        url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyACWO08GQPKBMBnbnSKkHW8CwYxRCtrJXk&libraries=places",
         check: function() { return typeof google === 'object' && typeof google.maps === 'object'; },
         promiseQueue: []
       }
