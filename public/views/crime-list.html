@@ -1,7 +1,7 @@
 <div class="crime-list-page">
   <div ng-class="{hide: !state.q.doneInitializing()}" style="height:100%;">
     <div class="crime-list" ng-if="state.q.doneInitializing()">
-      <div crime-list-item="crime" class="crime-item" ng-repeat="crime in state.crimeList"></div>
+      <div crime-list-item="crime" class="crime-item" ng-repeat="crime in state.crimeList | reverse"></div>
     </div>
     <div class="map-container-wrapper">
       <div class="map-container">

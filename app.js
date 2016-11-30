@@ -17,7 +17,7 @@ var logger = require('morgan');
 var errorHandler = require('errorhandler');
 var methodOverride = require('method-override');
 var ejsEngine = require('ejs-mate');
-var lusca = require('lusca');
+// var lusca = require('lusca');
 var Promise = require('bluebird');
 
 var flash = require('express-flash');
@@ -82,8 +82,8 @@ app.use(session({
   resave: false,
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    httpOnly: true,
-    secure: true // only when on HTTPS
+    httpOnly: true
+    // secure: true // only when on HTTPS
   }
 }));
 app.use(passport.initialize());
@@ -91,6 +91,7 @@ app.use(passport.session());
 app.use(flash());
 app.use(function(req, res, next) {
   res.locals.user = req.user;
+  console.log('TYLER', res.locals.user);
   res.locals.gaCode = secrets.googleAnalyticsCode;
   next();
 });
@@ -98,15 +99,15 @@ app.use(function(req, res, next) {
   if (/api/i.test(req.path)) req.session.returnTo = req.path;
   next();
 });
-app.use(lusca({
-  csrf: { angular: true },
-  xframe: 'SAMEORIGIN',
-  xssProtection: true
-}));
-app.use(function(req, res, next) {
-  res.cookie('XSRF-TOKEN', res.locals._csrf, {httpOnly: false});
-  next();
-});
+// app.use(lusca({
+//   csrf: { angular: true },
+//   xframe: 'SAMEORIGIN',
+//   xssProtection: true
+// }));
+// app.use(function(req, res, next) {
+//   res.cookie('XSRF-TOKEN', res.locals._csrf, {httpOnly: false});
+//   next();
+// });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
@@ -170,12 +171,12 @@ db
   .sequelize
   .sync({ force: false })
   .then(function() {
-    https.createServer({
-      key: fs.readFileSync('server.key'),
-      cert: fs.readFileSync('server.pem')
-    }, app).listen(443, function() {
-      console.log('Express server listening on port %d in %s mode', 443, app.get('env'));
-    });
+    // https.createServer({
+    //   key: fs.readFileSync('server.key'),
+    //   cert: fs.readFileSync('server.pem')
+    // }, app).listen(443, function() {
+    //   console.log('Express server listening on port %d in %s mode', 443, app.get('env'));
+    // });
     http.createServer(app).listen(3000, function() {
       console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
     });

@@ -1,0 +1,15 @@
+db:
+  # image: postgres
+  build: ./models
+  ports:
+    - "5432:5432"
+crime:
+  build: .
+  links:
+    - db
+  ports:
+    - "3000:3000"
+  environment:
+    - PGHOST=db
+    - PGDATABASE=crime
+    - PGUSER=crime_user

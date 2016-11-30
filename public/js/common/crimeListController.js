@@ -1,5 +1,11 @@
 'use strict';
 
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
+
 app.controller('CrimeListCtrl', ['$scope', '$timeout', 'baLocation', 'Crimes', 'Notifications', function($scope, $timeout, baLocation, Crimes, Notifications) {
   $scope.state = {
     location: null,

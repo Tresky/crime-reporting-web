@@ -24,6 +24,8 @@ app.directive('crimeListItem', function($location, baLocation) {
         scope.state.crimeIcon = 'fa fa-money fa-3x';
       } else if (type == 'assault') {
         scope.state.crimeIcon = 'fa fa-fire fa-3x';
+      } else if (type == 'clown-sighting') {
+        scope.state.crimeIcon = 'fa fa-smile-o fa-3x';
       }
 
 

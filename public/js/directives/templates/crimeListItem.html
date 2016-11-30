@@ -1,7 +1,7 @@
 <div class="crime-list-item" ng-click="goToHome()">
   <div class="primary-container" ng-click="state.expand = !state.expand;">
     <span class="crime-icon"><i ng-class="state.crimeIcon"></i></span>
-    {{ _.capitalize(crimeListItem.crimeType) }} reported at {{crimeListItem.address.split(',')[0]}}.
+    <span style="font-size:1.7rem;">{{ _.capitalize(crimeListItem.crimeType) }} reported at {{crimeListItem.address.split(',')[0]}}.</span>
     <span class="icon">
       <i ng-class="{'fa fa-angle-up': state.expand, 'fa fa-angle-down': !state.expand}"></i>
     </span>
@@ -10,7 +10,7 @@
     <div class="expansion-container animate-if" ng-if="state.expand">
       <div class="data-point">
         <div class="label">FULL ADDRESS:</div>
-        <div class="content">{{state.geocode.formatted_address}}</div>
+        <div class="content">{{crimeListItem.address}}</div>
       </div>
       <div class="data-point">
         <div class="label">OCCURRED AT:</div>

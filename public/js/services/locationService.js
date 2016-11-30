@@ -56,10 +56,15 @@ app.service('baLocation', ['$q', 'baLibraryStore', function($q, baLibraryStore) 
     }
 
     console.log('Geocoding Location', latlng, loc);
+    var queue = []
 
     geocoder.geocode({'location': latlng}, function(results, status) {
       if (status === 'OK') {
         deferred.resolve(results[0]);
+      }
+      else if (status === 'OVER_QUERY_LIMIT') {
+        console.log('Waiting to request Geocode again');
+        deferred.reject(status);
       } else {
         console.log('Failed to geocode', status, latlng);
         deferred.reject(status);

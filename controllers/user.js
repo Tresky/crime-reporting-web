@@ -34,9 +34,11 @@ exports.postLogin = function(req, res, next) {
       return res.redirect('/login');
     }
     req.logIn(user, function(loginErr) {
+      console.log('Logging In!', user);
       if (loginErr) return next(loginErr);
       delete req.session.returnTo;
-      res.redirect('/app');
+      console.log('Logging In!', req);
+      res.redirect('/app#');
     });
   })(req, res, next);
 };
@@ -44,7 +46,7 @@ exports.postLogin = function(req, res, next) {
 exports.logout = function(req, res) {
   req.logout();
   res.locals.user = null;
-  res.render('home', {
+  res.render('app', {
     title: 'Home'
   });
 };
@@ -153,7 +155,7 @@ exports.getOauthUnlink = function(req, res, next) {
 
 exports.getReset = function(req, res) {
   if (req.isAuthenticated()) {
-    return res.redirect('/');
+    return res.redirect('/app#');
   }
 
   UserRepo.findUserByResetPswToken(req.params.token)
@@ -202,13 +204,13 @@ exports.postReset = function(req, res, next) {
     }
   ], function(err) {
     if (err) return next(err);
-    res.redirect('/');
+    res.redirect('/app#');
   });
 };
 
 exports.getForgot = function(req, res) {
   if (req.isAuthenticated()) {
-    return res.redirect('/');
+    return res.redirect('/app#');
   }
   res.render('account/forgot', {
     title: 'Forgot Password'

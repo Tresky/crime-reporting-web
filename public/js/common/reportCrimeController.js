@@ -22,7 +22,8 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', '$locatio
 				types: [
 					'Assault',
 					'Murder',
-					'Stealing'
+					'Stealing',
+					'Clown-Sighting'
 				]
 			},
       q: {
