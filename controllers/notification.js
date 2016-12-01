@@ -57,7 +57,6 @@ exports.view = function(req, res) {
        n.update({
          viewedAt: (new Date).toISOString()
        }).then(function() {
-         console.log('YOU VIEWED THIS NOTIFICATIONS');
        });
      });
    }, function(response) {

@@ -56,23 +56,6 @@
         </div>
       </form>
     </div>
-    <div class="col-sm-6 linked-accounts">
-      <div class="page-header">
-        <h3>Linked Accounts</h3>
-      </div>
-
-      <% if(user.googleId) { %>
-        <p><a href="/account/unlink/google" class="text-danger">Unlink your Google account</a></p>
-      <% } else { %>
-        <p><a href="/auth/google">Link your Google account</a></p>
-      <% } %>
-
-      <% if(user.facebookId) { %>
-        <p><a href="/account/unlink/facebook" class="text-danger">Unlink your Facebook account</a></p>
-      <% } else { %>
-        <p><a href="/auth/facebook">Link your Facebook account</a></p>
-      <% } %>
-    </div>
   </div>
 
   <div class="row">

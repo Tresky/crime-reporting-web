@@ -34,10 +34,8 @@ exports.postLogin = function(req, res, next) {
       return res.redirect('/login');
     }
     req.logIn(user, function(loginErr) {
-      console.log('Logging In!', user);
       if (loginErr) return next(loginErr);
       delete req.session.returnTo;
-      console.log('Logging In!', req);
       res.redirect('/app#');
     });
   })(req, res, next);
