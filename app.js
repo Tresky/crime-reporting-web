@@ -34,7 +34,6 @@ var crimeController = require('./controllers/crime');
 var commentController = require('./controllers/comment');
 var notificationsController = require('./controllers/notification');
 var userController = require('./controllers/user');
-var apiController = require('./controllers/api');
 
 /**
  * API keys and Passport configuration.
@@ -133,7 +132,6 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 /**
  * API examples routes.
  */
-app.get('/api', apiController.getApi);
 app.get('/api/crimes', crimeController.index);
 app.post('/api/crimes', crimeController.create);
 app.get('/api/comments', commentController.index);

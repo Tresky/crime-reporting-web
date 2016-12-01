@@ -1,8 +1,6 @@
 'use strict';
 
-var instanceMethods = {
-
-};
+var instanceMethods = {};
 
 module.exports = function(db, DataTypes) {
   var Notification = db.define('Notification', {
@@ -30,12 +28,8 @@ module.exports = function(db, DataTypes) {
   }, {
     tableName: 'notification',
     instanceMethods: instanceMethods,
-    classMethods: {
-
-    },
-    hooks: {
-
-    }
+    classMethods: {},
+    hooks: {}
   });
 
   return Notification;

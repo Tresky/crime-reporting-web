@@ -12,6 +12,8 @@ RUN npm install bower -g
 COPY bower.json /usr/src/app/
 RUN bower install --allow-root
 
+echo 'SESSION_SECRET=YourSessionSecretGoesHere' > .env
+
 COPY . /usr/src/app
 
 # RUN cat /etc/passwd

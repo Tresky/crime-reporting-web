@@ -11,7 +11,6 @@ app.controller('CrimeListCtrl', ['$scope', '$timeout', 'baLocation', 'Crimes', '
     location: null,
     map: null,
     crimeList: [],
-    // initialized: false,
     q: {
       doneInitializing: function() { return $scope.state.initialized; }
     }

@@ -49,11 +49,10 @@ module.exports = function(db, DataTypes){
 		classMethods: {},
 		hooks: {
 			afterCreate: function(crime) {
-				console.log('Creating Notifications');
+				// Add notifications to every registered user in the system
 				db.models.User.findAll()
 					.then(function(users) {
 						users.forEach(function(user) {
-							console.log('- User', user.id);
 							db.models.Notification.create({
 								regionalId: crime.placeId,
 								crimeId: crime.id,

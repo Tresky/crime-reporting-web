@@ -173,8 +173,6 @@ app.controller('ReportCrimeCtrl', ['$scope', '$rootScope', '$timeout', '$locatio
         });
 
         $scope.map.panTo($scope.marker.getPosition());
-
-				// $scope.$apply(function() { $location.path('/crimes'); });
 			});
 		}
 

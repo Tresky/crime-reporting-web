@@ -9,6 +9,7 @@ crime:
     - db
   ports:
     - "3000:3000"
+    - "443:443"
   environment:
     - PGHOST=db
     - PGDATABASE=crime

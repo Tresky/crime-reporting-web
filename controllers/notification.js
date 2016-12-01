@@ -40,7 +40,6 @@ exports.create = function(req, res) {
 
   db.Notification.create(data)
    .then(function(newNotif) {
-     console.log('Created a new Notification', newNotif);
      res.send(newNotif);
    }, function(response) {
      console.log('Failed to make new Notification', response);

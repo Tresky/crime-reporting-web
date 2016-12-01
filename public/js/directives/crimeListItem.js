@@ -27,14 +27,6 @@ app.directive('crimeListItem', function($location, baLocation) {
       } else if (type == 'clown-sighting') {
         scope.state.crimeIcon = 'fa fa-smile-o fa-3x';
       }
-
-
-
-      // scope.goToHome = function() {
-        // $state.go('/', { crimeId: scope.crimeListItem.id });
-        // $location.path('/crimes/' + scope.crimeListItem);
-        // $window.location = '/crimes/:crimeId';
-      // };
     },
     controller: function() {
 

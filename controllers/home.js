@@ -15,10 +15,3 @@ exports.app = function(req, res) {
     title: 'Application'
   });
 }
-
-exports.crimeList = function(req, res) {
-  res.render('crime-list', {
-    title: 'Crime List',
-    params: 'Tyler'
-  });
-};

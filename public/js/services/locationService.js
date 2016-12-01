@@ -115,7 +115,6 @@ app.service('baLocation', ['$q', 'baLibraryStore', function($q, baLibraryStore) 
         };
 
         _.forEach(promiseQueue, function(p) {
-          console.log(' - Resolving Position');
           p.resolve(location);
         })
       });
@@ -151,7 +150,6 @@ app.service('baLocation', ['$q', 'baLibraryStore', function($q, baLibraryStore) 
   var fetchExplicitPosition = function() {
     var deferred = $q.defer();
 
-    console.log('CURRENT', explicitLoc);
     if (explicitLoc) {
       deferred.resolve(explicitLoc);
     } else {

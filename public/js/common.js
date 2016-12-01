@@ -38,7 +38,6 @@
 //= require common/crimeListController
 //= require common/pswStrengthComponent
 //= require common/userController
-//= require common/contactController
 
 //= require directives/beaware
 //= require directives/crimeListItem

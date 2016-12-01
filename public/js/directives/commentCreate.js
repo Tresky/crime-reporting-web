@@ -13,13 +13,11 @@ app.directive('commentCreate', function(Comments) {
       };
 
       scope.submitComment = function() {
-        console.log('Submitting Comment');
         Comments.create({
           message: scope.state.message,
           userId: 0,
           crimeId: scope.crime.id
         }).then(function(newComment) {
-          console.log('Successfully created new Comment', newComment);
           scope.$emit('comment:createSuccess');
           scope.state.message = '';
         }, function(response) {

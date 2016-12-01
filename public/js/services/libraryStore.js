@@ -4,7 +4,6 @@ app.service('baLibraryStore', ['$q', '$interval', function($q, $interval){
     var libraries = {
       'googleplaces': {
         name: "GooglePlaces",
-        // url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAu_I-8fBuC3d_UrovCDMCswAfWmuF-iYE&libraries=places",
         url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyACWO08GQPKBMBnbnSKkHW8CwYxRCtrJXk&libraries=places",
         check: function() { return typeof google === 'object' && typeof google.maps === 'object'; },
         promiseQueue: []
@@ -48,7 +47,7 @@ app.service('baLibraryStore', ['$q', '$interval', function($q, $interval){
                 }
 
               } else if (retriesLeft === 0) {
-                Rollbar.warning('Timed out attempting to load ' + lib.name);
+                console.warning('Timed out attempting to load ' + lib.name);
                 $interval.cancel(lib._intvl);
 
                 while (lib.promiseQueue.length > 0) {
@@ -61,7 +60,7 @@ app.service('baLibraryStore', ['$q', '$interval', function($q, $interval){
             }, 25);
           }
         }, function() {
-          Rollbar.warning('Unable to load dependencies for library ' + lib.name);
+          console.warning('Unable to load dependencies for library ' + lib.name);
           deferred.reject();
         });
 

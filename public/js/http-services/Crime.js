@@ -10,7 +10,6 @@ app.factory('Crimes', function($http, $q) {
       C._dateOfCrime = moment(C.dateOfCrime);
     }
 
-    // M.sdsd = function.....
     return C;
   };
 

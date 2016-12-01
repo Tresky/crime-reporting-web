@@ -1,27 +1,6 @@
 'use strict';
 
-// Crime:
-//   crimeType => 'sexual' | 'violent' | 'theft'|
-//   longitude
-//   latitude
-//   dateOfCrime
-//   userID
-//   email=> userID === null -> email must be defined
-//
-//   createdAt
-//   updatedAt
-//
-// Comment:
-//   id
-//   message => 'was wearing a red shirt'
-//   userID => if null -> anonymous
-//
-//   createdAt
-//   updatedAt
-
-var instanceMethods = {
-
-};
+var instanceMethods = {};
 
 module.exports = function(db, DataTypes) {
   var Comment = db.define('Comment', {
@@ -46,12 +25,8 @@ module.exports = function(db, DataTypes) {
   }, {
     tableName: 'comment',
     instanceMethods: instanceMethods,
-    classMethods: {
-
-    },
-    hooks: {
-
-    }
+    classMethods: {},
+    hooks: {}
   });
 
   return Comment;

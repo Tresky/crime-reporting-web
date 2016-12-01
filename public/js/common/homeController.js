@@ -26,12 +26,6 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$location', '$timeout', 'ba
 				.then(function() {
 					console.log('Loaded Google Places');
 					initAutocomplete();
-
-					// This is called just to get the current position in the cache.
-					// Allows the request to move quicker if the user clicks the
-					// 'current position' button.
-					// console.log('TYLER');
-					// baLocation.fetchPosition();
 				}, function(response) {
 					console.log('Failed to load the Google Places API.', response);
 				});
@@ -57,15 +51,7 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$location', '$timeout', 'ba
 					lng: place.geometry.location.lng(),
 					timeFetched: time
 				});
-				// console.log('Positionm', place);
-				// baLocation.geocodeCoordinates({
-				// 	latitude: place.geometry.location.lat(),
-				// 	longitude: place.geometry.location.lng()
-				// })
-				// 	.then(function(geocode) {
-				// 		console.log('GEOCODE', geocode);
-				// 	});
-				// baDataService.setCurrentLocation($scope.searchBox.getPlaces()[0]);
+				
 				$scope.$apply(function() { $location.path('/crimes'); });
 			});
 		}
