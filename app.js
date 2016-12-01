@@ -82,8 +82,8 @@ app.use(session({
   resave: false,
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    httpOnly: true
-    // secure: true // only when on HTTPS
+    httpOnly: true,
+    secure: true // only when on HTTPS
   }
 }));
 app.use(passport.initialize());
@@ -91,7 +91,6 @@ app.use(passport.session());
 app.use(flash());
 app.use(function(req, res, next) {
   res.locals.user = req.user;
-  console.log('TYLER', res.locals.user);
   res.locals.gaCode = secrets.googleAnalyticsCode;
   next();
 });
