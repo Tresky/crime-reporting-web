@@ -170,15 +170,15 @@ db
   .sequelize
   .sync({ force: false })
   .then(function() {
-    // https.createServer({
-    //   key: fs.readFileSync('server.key'),
-    //   cert: fs.readFileSync('server.pem')
-    // }, app).listen(443, function() {
-    //   console.log('Express server listening on port %d in %s mode', 443, app.get('env'));
-    // });
-    http.createServer(app).listen(3000, function() {
-      console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
+    https.createServer({
+      key: fs.readFileSync('server.key'),
+      cert: fs.readFileSync('server.pem')
+    }, app).listen(443, function() {
+      console.log('Express server listening on port %d in %s mode', 443, app.get('env'));
     });
+    // http.createServer(app).listen(80, function() {
+    //   console.log('Express server listening on port %d in %s mode', 80, app.get('env'));
+    // });
   });
 
 module.exports = app;
